@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bachelor Party Invite</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep: #1a3a2a;
+    --green-mid: #2d5a3d;
+    --green-bright: #4a8c5c;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5efe0;
+    --dark: #0d1f16;
+    --white: #fdfaf3;
+  }
+
+  body {
+    background: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 20%, rgba(45,90,61,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(26,58,42,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 50%, rgba(13,31,22,1) 0%, transparent 100%);
+    z-index: 0;
+  }
+
+  /* Subtle grass texture dots */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(74,140,92,0.06) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 680px;
+    background: linear-gradient(145deg, var(--green-deep) 0%, #122a1e 50%, var(--dark) 100%);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 
+      0 0 0 1px rgba(201,168,76,0.1),
+      0 0 60px rgba(0,0,0,0.8),
+      0 0 120px rgba(74,140,92,0.1);
+    animation: fadeIn 1.2s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Gold top border accent */
+  .card::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  }
+
+  /* Gold bottom border accent */
+  .card::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  }
+
+  .inner {
+    padding: 50px 55px;
+  }
+
+  /* Header badge */
+  .badge {
+    text-align: center;
+    margin-bottom: 8px;
+    animation: fadeIn 1.4s ease forwards;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+  }
+
+  .badge span {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 20px;
+    text-transform: uppercase;
+  }
+
+  /* Golf flag SVG area */
+  .flag-area {
+    text-align: center;
+    margin: 28px 0 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  .flag-area svg {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 0 15px rgba(201,168,76,0.4));
+  }
+
+  /* Title */
+  .title-block {
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.6s;
+    animation-fill-mode: forwards;
+  }
+
+  .title-block .last-round {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 8px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .title-block h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 8vw, 72px);
+    font-weight: 900;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 0.95;
+    text-shadow: 0 2px 30px rgba(201,168,76,0.2);
+    letter-spacing: -1px;
+  }
+
+  .title-block h1 .name {
+    color: var(--gold-light);
+    display: block;
+  }
+
+  .title-block .subtitle {
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: rgba(245,239,224,0.5);
+    text-transform: uppercase;
+    margin-top: 12px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 30px 0;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.8s;
+    animation-fill-mode: forwards;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5));
+  }
+  .divider::after {
+    background: linear-gradient(270deg, transparent, rgba(201,168,76,0.5));
+  }
+
+  .divider-icon {
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  /* Schedule */
+  .schedule {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+    position: relative;
+  }
+
+  .event:last-child { border-bottom: none; }
+
+  .event-number {
+    position: absolute;
+    left: -20px;
+    top: 22px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    color: rgba(201,168,76,0.3);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .event-left {}
+
+  .event-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 6px;
+    opacity: 0.8;
+  }
+
+  .event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .event-desc {
+    font-size: 15px;
+    color: rgba(245,239,224,0.6);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .event-time {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .event-time .time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .event-time .ampm {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: rgba(201,168,76,0.6);
+    letter-spacing: 2px;
+    display: block;
+    text-align: right;
+    margin-top: 2px;
+  }
+
+  /* Location cards */
+  .locations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 28px 0;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.2s;
+    animation-fill-mode: forwards;
+  }
+
+  .loc-card {
+    background: rgba(74,140,92,0.07);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 18px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .loc-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .loc-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 5px;
+    opacity: 0.7;
+  }
+
+  .loc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+
+  .loc-detail {
+    font-size: 12px;
+    color: rgba(245,239,224,0.45);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* Bottom RSVP */
+  .rsvp-block {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.4s;
+    animation-fill-mode: forwards;
+  }
+
+  .rsvp-block p {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: rgba(245,239,224,0.4);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .rsvp-block .dress-code {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(245,239,224,0.55);
+  }
+
+  .rsvp-block .dress-code strong {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  /* Corner ornaments */
+  .ornament {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.25;
+  }
+  .ornament.tl { top: 16px; left: 16px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+  .ornament.tr { top: 16px; right: 16px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+  .ornament.bl { bottom: 16px; left: 16px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+  .ornament.br { bottom: 16px; right: 16px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+
+  @media (max-width: 520px) {
+    .inner { padding: 35px 28px; }
+    .locations { grid-template-columns: 1fr; }
+    .title-block h1 { font-size: 52px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="ornament tl"></div>
+  <div class="ornament tr"></div>
+  <div class="ornament bl"></div>
+  <div class="ornament br"></div>
+
+  <div class="inner">
+
+    <div class="badge">
+      <span>You are cordially invited</span>
+    </div>
+
+    <div class="flag-area">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Flag pole -->
+        <line x1="28" y1="10" x2="28" y2="72" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+        <!-- Flag -->
+        <path d="M28 14 L58 24 L28 34 Z" fill="#c9a84c" opacity="0.9"/>
+        <!-- Ball -->
+        <circle cx="28" cy="72" r="5" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+        <circle cx="28" cy="72" r="2" fill="#c9a84c" opacity="0.5"/>
+        <!-- Grass line -->
+        <path d="M14 72 Q21 68 28 72 Q35 76 42 72" stroke="#4a8c5c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Stars / sparkles -->
+        <circle cx="56" cy="16" r="1.5" fill="#e8c97a" opacity="0.6"/>
+        <circle cx="62" cy="30" r="1" fill="#e8c97a" opacity="0.4"/>
+        <circle cx="14" cy="30" r="1" fill="#e8c97a" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <div class="title-block">
+      <span class="last-round">The Last Round Before The Vows</span>
+      <h1>
+        Bachelor
+        <span class="name">Party</span>
+      </h1>
+      <p class="subtitle">One Epic Day · One Legendary Night</p>
+    </div>
+
+    <div class="divider">
+      <span class="divider-icon">⛳</span>
+    </div>
+
+    <div class="schedule">
+      <div class="event">
+        <div class="event-left">
+          <div class="event-tag">Morning · Round One</div>
+          <div class="event-title">Tee Off at Vaal de Grace</div>
+          <div class="event-desc">18 holes of bragging rights, cold beers on the cart, and zero excuses for bogeys</div>
+        </div>
+        <div class="event-time">
+          <div class="time">07:30</div>
+          <div class="ampm">AM</div>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="event-left">
+          <div class="event-tag">Afternoon · 19th Hole</div>
+          <div class="event-title">Clubhouse Lunch & Awards</div>
+          <div class="event-desc">Longest drive, worst swing — all shall be celebrated accordingly</div>
+        </div>
+        <div class="event-time">
+          <div class="time">13:00</div>
+          <div class="ampm">PM</div>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="event-left">
+          <div class="event-tag">Evening · The Main Event</div>
+          <div class="event-title">Night at the Lodge</div>
+          <div class="event-desc">Fire, braai, whisky, and stories that stay between the lads</div>
+        </div>
+        <div class="event-time">
+          <div class="time">17:00</div>
+          <div class="ampm">PM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="locations">
+      <div class="loc-card">
+        <span class="loc-icon">⛳</span>
+        <div class="loc-label">Morning Venue</div>
+        <div class="loc-name">Vaal de Grace Golf Course</div>
+        <div class="loc-detail">Vaal River, Gauteng</div>
+      </div>
+      <div class="loc-card">
+        <span class="loc-icon">🌙</span>
+        <div class="loc-label">Evening Venue</div>
+        <div class="loc-name">Leeuwkuil</div>
+        <div class="loc-detail">Schoemansdrift Road, Potchefstroom, 2520</div>
+      </div>
+    </div>
+
+    <div class="rsvp-block">
+      <p>Dress Code</p>
+      <p class="dress-code">Golf wear in the morning · <strong>Smart casual</strong> for the evening</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
