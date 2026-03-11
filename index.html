@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bachelor Party Invite</title>
+  <!-- WhatsApp / Social Preview -->
+  <meta name="description" content="Golf at Vaal de Grace. Night at Leeuwkuil. One epic send-off.">
+  <meta property="og:title" content="🏌️ Bachelor Party — You're Invited">
+  <meta property="og:description" content="Golf at Vaal de Grace in the morning. Night at Leeuwkuil, Potchefstroom. One epic send-off.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=600&q=80">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="400">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="🏌️ Bachelor Party — You're Invited">
+  <meta name="twitter:description" content="Golf at Vaal de Grace. Night at Leeuwkuil, Potchefstroom.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=600&q=80">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -388,9 +400,91 @@
   .ornament.bl { bottom: 16px; left: 16px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
   .ornament.br { bottom: 16px; right: 16px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
 
+  /* Costs grid */
+  .costs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0 28px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.3s;
+    animation-fill-mode: forwards;
+  }
+
+  .cost-card {
+    padding: 18px;
+    border-radius: 2px;
+    border: 1px solid rgba(201,168,76,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cost-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .cost-card.included { background: rgba(74,140,92,0.08); }
+  .cost-card.included::before { background: linear-gradient(90deg, var(--green-bright), transparent); }
+
+  .cost-card.own { background: rgba(201,168,76,0.05); }
+  .cost-card.own::before { background: linear-gradient(90deg, var(--gold), transparent); }
+
+  .cost-label {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+
+  .cost-card.included .cost-label { color: var(--green-bright); }
+  .cost-card.own .cost-label { color: var(--gold); }
+
+  .cost-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .cost-card ul li {
+    font-size: 13px;
+    color: rgba(245,239,224,0.7);
+    padding: 4px 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* RSVP date */
+  .rsvp-date {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .rsvp-label {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: rgba(245,239,224,0.4);
+  }
+
+  .rsvp-deadline {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
   @media (max-width: 520px) {
     .inner { padding: 35px 28px; }
     .locations { grid-template-columns: 1fr; }
+    .costs-grid { grid-template-columns: 1fr; }
     .title-block h1 { font-size: 52px; }
   }
 </style>
@@ -433,7 +527,7 @@
         Bachelor
         <span class="name">Party</span>
       </h1>
-      <p class="subtitle">One Epic Day · One Legendary Night</p>
+      <p class="subtitle">Saturday, 2 May 2026 · One Epic Day · One Legendary Night</p>
     </div>
 
     <div class="divider">
@@ -445,7 +539,7 @@
         <div class="event-left">
           <div class="event-tag">Morning · Round One</div>
           <div class="event-title">Tee Off at Vaal de Grace</div>
-          <div class="event-desc">18 holes of bragging rights, cold beers on the cart, and zero excuses for bogeys</div>
+          <div class="event-desc">9 holes of bragging rights, cold beers on the cart, and zero excuses for bogeys</div>
         </div>
         <div class="event-time">
           <div class="time">07:30</div>
@@ -455,24 +549,12 @@
 
       <div class="event">
         <div class="event-left">
-          <div class="event-tag">Afternoon · 19th Hole</div>
-          <div class="event-title">Clubhouse Lunch & Awards</div>
-          <div class="event-desc">Longest drive, worst swing — all shall be celebrated accordingly</div>
-        </div>
-        <div class="event-time">
-          <div class="time">13:00</div>
-          <div class="ampm">PM</div>
-        </div>
-      </div>
-
-      <div class="event">
-        <div class="event-left">
           <div class="event-tag">Evening · The Main Event</div>
-          <div class="event-title">Night at the Lodge</div>
-          <div class="event-desc">Fire, braai, whisky, and stories that stay between the lads</div>
+          <div class="event-title">Awards & Night at the Lodge</div>
+          <div class="event-desc">Longest drive, worst swing — crowned at Leeuwkuil over fire, braai, and stories that stay between the lads</div>
         </div>
         <div class="event-time">
-          <div class="time">17:00</div>
+          <div class="time">14:00</div>
           <div class="ampm">PM</div>
         </div>
       </div>
@@ -493,9 +575,35 @@
       </div>
     </div>
 
+    <!-- What's included -->
+    <div class="divider" style="margin-top:28px;">
+      <span class="divider-icon">📋</span>
+    </div>
+
+    <div class="costs-grid">
+      <div class="cost-card included">
+        <div class="cost-label">✓ Included</div>
+        <ul>
+          <li>🛏️ Accommodation at Leeuwkuil</li>
+          <li>🍖 Evening braai &amp; food</li>
+        </ul>
+      </div>
+      <div class="cost-card own">
+        <div class="cost-label">Own Account</div>
+        <ul>
+          <li>⛳ Golf at Vaal de Grace</li>
+          <li>🍺 Bring your own dop</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="rsvp-block">
       <p>Dress Code</p>
       <p class="dress-code">Golf wear in the morning · <strong>Smart casual</strong> for the evening</p>
+      <div class="rsvp-date">
+        <span class="rsvp-label">RSVP Before</span>
+        <span class="rsvp-deadline">17 March 2026</span>
+      </div>
     </div>
 
   </div>
